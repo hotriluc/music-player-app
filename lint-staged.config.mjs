@@ -1,4 +1,4 @@
-const config = {
+export default {
   // Type check TypeScript files
   '**/*.(ts|tsx)': () => 'tsc --noEmit',
 
@@ -11,5 +11,3 @@ const config = {
   // Format MarkDown and JSON
   '**/*.(md|json)': (filenames) => `prettier --write ${filenames.join(' ')}`,
 };
-
-export default config;
