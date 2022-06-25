@@ -1,9 +1,9 @@
 import React from 'react';
 
-function MusicPlayerItem(): JSX.Element {
+function MusicPlayerItem(props: { id: string }): JSX.Element {
   return (
     <div>
-      <p>It is music player item</p>
+      <p>{props.id}</p>
     </div>
   );
 }
