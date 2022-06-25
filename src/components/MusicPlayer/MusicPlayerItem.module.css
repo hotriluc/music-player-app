@@ -1,0 +1,30 @@
+.song {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.title-wrapper {
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.artist-name {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.img-holder {
+}
+.cover-img {
+  max-width: 7.5rem;
+}
+
+.likes {
+  font-size: 1.2rem;
+}

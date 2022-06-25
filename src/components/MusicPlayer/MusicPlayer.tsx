@@ -1,12 +1,12 @@
 import React from 'react';
+import Wrapper from '../Layout/Wrapper';
 import MusicPlayerList from './MusicPlayerList';
 
 function MusicPlayer(): JSX.Element {
   return (
-    <div>
+    <Wrapper>
       <MusicPlayerList />
-      <p>It is music player</p>
-    </div>
+    </Wrapper>
   );
 }
 

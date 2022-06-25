@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from '../MusicPlayer/MusicPlayerItem.module.css';
 interface MusicPlayerItemProps {
   title: string;
   artistName: string;
@@ -9,11 +9,15 @@ interface MusicPlayerItemProps {
 
 function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
   return (
-    <li>
-      <p>{props.title}</p>
-      <p>{props.artistName}</p>
-      <img src={props.coverImage} />
-      <p>{props.likes}</p>
+    <li className={styles['song']}>
+      <div className={styles['img-holder']}>
+        <img className={styles['cover-img']} src={props.coverImage} alt="" />
+      </div>
+      <div className={styles['title-wrapper']}>
+        <p className={styles['title']}>{props.title}</p>
+        <p className={styles['artist-name']}>{props.artistName}</p>
+      </div>
+      <p className={styles['likes']}>{props.likes}</p>
     </li>
   );
 }
