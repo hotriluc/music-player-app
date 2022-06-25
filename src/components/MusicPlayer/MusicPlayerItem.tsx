@@ -1,10 +1,20 @@
 import React from 'react';
 
-function MusicPlayerItem(props: { id: string }): JSX.Element {
+interface MusicPlayerItemProps {
+  title: string;
+  artistName: string;
+  coverImage: string;
+  likes: number;
+}
+
+function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
   return (
-    <div>
-      <p>{props.id}</p>
-    </div>
+    <li>
+      <p>{props.title}</p>
+      <p>{props.artistName}</p>
+      <img src={props.coverImage} />
+      <p>{props.likes}</p>
+    </li>
   );
 }
 

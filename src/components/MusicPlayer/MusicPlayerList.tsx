@@ -37,12 +37,16 @@ function MusicPlayerList(): JSX.Element {
     getSongsList().catch((err) => console.log(err));
   }, []);
 
-  console.log(songsList);
-
   return (
     <ul>
       {songsList.map((song) => (
-        <MusicPlayerItem key={song.id} id={song.id} />
+        <MusicPlayerItem
+          key={song.id}
+          title={song.songName}
+          artistName={song.artistName}
+          likes={song.likes}
+          coverImage={song.coverImage}
+        />
       ))}
     </ul>
   );
