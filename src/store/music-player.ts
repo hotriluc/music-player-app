@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ISong } from '../interfaces/SongInterface';
 
 const initialState = {
   musicList: [],
+  currentSong: {},
 };
 
 const musicPlayerSlice = createSlice({
@@ -10,6 +12,13 @@ const musicPlayerSlice = createSlice({
   reducers: {
     replaceMusicList(state, action) {
       state.musicList = action.payload;
+      state.currentSong = state.musicList[0];
+    },
+    selectCurrentSong(state, action) {
+      const foundIndex = state.musicList.findIndex(
+        (song: ISong) => song.id === action.payload
+      );
+      state.currentSong = state.musicList[foundIndex];
     },
   },
 });

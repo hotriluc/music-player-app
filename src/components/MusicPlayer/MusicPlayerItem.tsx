@@ -1,17 +1,21 @@
 import React from 'react';
 import styles from '../MusicPlayer/MusicPlayerItem.module.css';
+import { useDispatch } from 'react-redux';
+import { musicPlayerActions } from '../../store/music-player';
+
 interface MusicPlayerItemProps {
   id: string;
   title: string;
   artistName: string;
   coverImage: string;
   likes: number;
-  clicked: (songId: string) => void;
 }
 
 function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
+  const dispatch = useDispatch();
+
   const onClickSongHandler = () => {
-    props.clicked(props.id);
+    dispatch(musicPlayerActions.selectCurrentSong(props.id));
   };
 
   return (

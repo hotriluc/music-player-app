@@ -6,20 +6,11 @@ import styles from './MusicPlayerList.module.css';
 import { musicPlayerActions } from '../../store/music-player';
 import { IRootState } from '../../store/RootState';
 
-// interface
-// props: {
-//   clickedSong: (song: ISong) => void;
-// }
-
 function MusicPlayerList(): JSX.Element {
   const dispatch = useDispatch();
   const songsList: ISong[] = useSelector(
     (state: IRootState) => state.musicPlayer.musicList
   );
-
-  const onClickSongHandler = (id: string) => {
-    console.log(id);
-  };
 
   useEffect(() => {
     const getSongsList = async () => {
@@ -63,7 +54,6 @@ function MusicPlayerList(): JSX.Element {
           artistName={song.artistName}
           likes={song.likes}
           coverImage={song.coverImage}
-          clicked={onClickSongHandler}
         />
       ))}
     </ul>
