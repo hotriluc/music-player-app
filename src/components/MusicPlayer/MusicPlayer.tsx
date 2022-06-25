@@ -1,12 +1,14 @@
 import React from 'react';
-import Wrapper from '../Layout/Wrapper';
 import MusicPlayerList from './MusicPlayerList';
+import MusicPlayerNavigation from './MusicPlayerNavigation';
+import styles from './MusicPlayer.module.css';
 
 function MusicPlayer(): JSX.Element {
   return (
-    <Wrapper>
+    <div className={styles['music-player']}>
       <MusicPlayerList />
-    </Wrapper>
+      <MusicPlayerNavigation />
+    </div>
   );
 }
 

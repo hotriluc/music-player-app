@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ISong } from '../../interfaces/SongInterface';
 import MusicPlayerItem from './MusicPlayerItem';
+import styles from './MusicPlayerList.module.css';
 
 function MusicPlayerList(): JSX.Element {
   const [songsList, setSongsList] = useState<ISong[]>([]);
@@ -38,7 +39,7 @@ function MusicPlayerList(): JSX.Element {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles['music-player-list']}>
       {songsList.map((song) => (
         <MusicPlayerItem
           key={song.id}
