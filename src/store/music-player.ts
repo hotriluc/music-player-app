@@ -4,6 +4,7 @@ import { ISong } from '../interfaces/SongInterface';
 const initialState = {
   musicList: [],
   currentSong: {},
+  isPlaying: false,
 };
 
 const musicPlayerSlice = createSlice({
@@ -19,6 +20,10 @@ const musicPlayerSlice = createSlice({
         (song: ISong) => song.id === action.payload
       );
       state.currentSong = state.musicList[foundIndex];
+      state.isPlaying = false;
+    },
+    playSong(state) {
+      state.isPlaying = !state.isPlaying;
     },
   },
 });

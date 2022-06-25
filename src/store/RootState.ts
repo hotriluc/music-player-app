@@ -4,5 +4,6 @@ export interface IRootState {
   musicPlayer: {
     musicList: ISong[];
     currentSong: ISong;
+    isPlaying: boolean;
   };
 }
