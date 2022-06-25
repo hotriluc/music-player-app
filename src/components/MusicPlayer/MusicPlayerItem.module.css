@@ -7,6 +7,12 @@
   border-radius: 1rem;
   cursor: pointer;
   box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
+  transition: all 0.3s ease-out;
+}
+
+.song:hover {
+  border: 2px solid cyan;
+  transform: scale(1.05);
 }
 
 .title-wrapper {
@@ -32,4 +38,9 @@
   font-size: 1.2rem;
   margin-left: auto;
   flex-basis: 20%;
+}
+
+.active-song {
+  border: 2px solid greenyellow;
+  transform: scale(1.05);
 }

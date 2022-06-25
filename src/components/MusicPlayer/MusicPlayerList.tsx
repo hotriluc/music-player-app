@@ -3,8 +3,17 @@ import { ISong } from '../../interfaces/SongInterface';
 import MusicPlayerItem from './MusicPlayerItem';
 import styles from './MusicPlayerList.module.css';
 
+// interface
+// props: {
+//   clickedSong: (song: ISong) => void;
+// }
+
 function MusicPlayerList(): JSX.Element {
   const [songsList, setSongsList] = useState<ISong[]>([]);
+
+  const onClickSongHandler = (id: string) => {
+    console.log(id);
+  };
 
   useEffect(() => {
     const getSongsList = async () => {
@@ -43,10 +52,12 @@ function MusicPlayerList(): JSX.Element {
       {songsList.map((song) => (
         <MusicPlayerItem
           key={song.id}
+          id={song.id}
           title={song.songName}
           artistName={song.artistName}
           likes={song.likes}
           coverImage={song.coverImage}
+          clicked={onClickSongHandler}
         />
       ))}
     </ul>
