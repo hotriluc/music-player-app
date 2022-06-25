@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './MusicPlayerNavigation.module.css';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../store/RootState';
 
@@ -8,11 +9,13 @@ function MusicPlayerNavigation(): JSX.Element {
   );
 
   return (
-    <div>
-      <p>{current.id}</p>
-      <button>next</button>
-      <button>back</button>
-      <button>stop</button>
+    <div className={styles['navigation-wrapper']}>
+      <img className={styles['cover-img']} src={current.coverImage} alt="" />
+      <div>
+        <button>back</button>
+        <button>stop</button>
+        <button>next</button>
+      </div>
     </div>
   );
 }
