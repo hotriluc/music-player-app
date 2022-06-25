@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ISong } from '../../interfaces/SongInterface';
 import MusicPlayerItem from './MusicPlayerItem';
 import styles from './MusicPlayerList.module.css';
+import { musicPlayerActions } from '../../store/music-player';
+import { IRootState } from '../../store/RootState';
 
 // interface
 // props: {
@@ -9,7 +12,10 @@ import styles from './MusicPlayerList.module.css';
 // }
 
 function MusicPlayerList(): JSX.Element {
-  const [songsList, setSongsList] = useState<ISong[]>([]);
+  const dispatch = useDispatch();
+  const songsList: ISong[] = useSelector(
+    (state: IRootState) => state.musicPlayer.musicList
+  );
 
   const onClickSongHandler = (id: string) => {
     console.log(id);
@@ -41,7 +47,7 @@ function MusicPlayerList(): JSX.Element {
         };
       });
 
-      setSongsList(newSongData);
+      dispatch(musicPlayerActions.replaceMusicList(newSongData));
     };
 
     getSongsList().catch((err) => console.log(err));
