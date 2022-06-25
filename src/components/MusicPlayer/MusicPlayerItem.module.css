@@ -6,9 +6,11 @@
   background-color: white;
   border-radius: 1rem;
   cursor: pointer;
+  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
 }
 
 .title-wrapper {
+  flex-basis: 40%;
 }
 
 .title {
@@ -28,4 +30,6 @@
 
 .likes {
   font-size: 1.2rem;
+  margin-left: auto;
+  flex-basis: 20%;
 }
