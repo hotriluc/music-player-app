@@ -44,5 +44,5 @@
 }
 
 .active-song {
-  border: 2px solid greenyellow;
+  border-color: greenyellow;
 }
