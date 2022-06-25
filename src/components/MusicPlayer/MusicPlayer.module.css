@@ -1,10 +1,13 @@
 .music-player {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 
+  overflow: hidden;
   background-color: white;
   border-radius: 2rem;
+  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
+
   height: 90vh;
   margin: 4rem;
 }

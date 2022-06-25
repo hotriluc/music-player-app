@@ -1,9 +1,14 @@
 .music-player-list {
   /* grid-column: 2; */
+  overflow-y: scroll;
   flex-basis: 35%;
   display: flex;
+  gap: 2rem;
   flex-direction: column;
+  background: rgba(5, 48, 204, 0.8);
+  padding: 2.5rem;
+}
 
-  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
-  border-radius: 2rem;
+li {
+  cursor: pointer;
 }
