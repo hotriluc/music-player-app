@@ -1,9 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ISong } from '../interfaces/SongInterface';
+import { IRootState } from './RootState';
 
-const initialState = {
+const initialState: IRootState['musicPlayer'] = {
   musicList: [],
-  currentSong: {},
+  currentSong: {
+    id: '',
+    songName: '',
+    artistName: '',
+    audioFile: '',
+    coverImage: '',
+    likes: 0,
+  },
   isPlaying: false,
 };
 
@@ -24,6 +32,13 @@ const musicPlayerSlice = createSlice({
     },
     playSong(state) {
       state.isPlaying = !state.isPlaying;
+    },
+    nextSong(state) {
+      const currentSongIndex = state.musicList.findIndex(
+        (song: ISong) => song.id === state.currentSong.id
+      );
+      const nextSongIndex = (currentSongIndex + 1) % state.musicList.length;
+      state.currentSong = state.musicList[nextSongIndex];
     },
   },
 });

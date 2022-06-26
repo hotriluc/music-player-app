@@ -31,6 +31,10 @@ function MusicPlayerNavigation(): JSX.Element {
     dispatch(musicPlayerActions.playSong());
   };
 
+  const nextSongHandler = () => {
+    dispatch(musicPlayerActions.nextSong());
+  };
+
   return (
     <div className={styles['navigation-wrapper']}>
       <img
@@ -45,7 +49,7 @@ function MusicPlayerNavigation(): JSX.Element {
         <button className={styles['play-btn']} onClick={playSongHandler}>
           <FontAwesomeIcon icon={!isPlaying ? faPlay : faPause} />
         </button>
-        <button className={styles['next-btn']}>
+        <button className={styles['next-btn']} onClick={nextSongHandler}>
           <FontAwesomeIcon icon={faForward} />
         </button>
       </div>
