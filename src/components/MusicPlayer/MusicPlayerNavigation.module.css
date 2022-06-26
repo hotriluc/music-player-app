@@ -2,9 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
-
-  /* height: 40%; */
 }
 
 .cover-img {
@@ -41,8 +38,11 @@
   height: 4rem;
 }
 
-.play-btn:focus,
-.next-btn:focus,
-.back-btn:focus {
+.next-btn:active,
+.back-btn:active {
+  color: rgba(98, 0, 255, 0.9);
+}
+
+.is-playing {
   color: rgba(98, 0, 255, 0.9);
 }
