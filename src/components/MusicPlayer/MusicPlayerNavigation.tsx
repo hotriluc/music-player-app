@@ -12,6 +12,7 @@ import {
   faBackward,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
+import { likeSong } from '../../services/MusicPlayerService';
 
 function MusicPlayerNavigation(): JSX.Element {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -40,9 +41,13 @@ function MusicPlayerNavigation(): JSX.Element {
     dispatch(musicPlayerActions.prevSong());
   };
 
+  const onLikeHandler = () => {
+    likeSong(currentSong.id);
+  };
+
   return (
     <div className={styles['navigation-wrapper']}>
-      <button className={styles['like-btn']}>
+      <button className={styles['like-btn']} onClick={onLikeHandler}>
         <FontAwesomeIcon icon={faHeart} />
       </button>
       <img

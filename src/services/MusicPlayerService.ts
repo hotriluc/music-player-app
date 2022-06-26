@@ -38,3 +38,26 @@ export const fetchMusicList = async (dispatch: Dispatch) => {
     console.log(err);
   }
 };
+
+export const likeSong = async (songId: string) => {
+  const sendRequest = async () => {
+    const response = await fetch(
+      'https://api-stg.jam-community.com/interact/like?apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `id=${songId}`,
+      }
+    );
+    return response.json();
+  };
+
+  try {
+    const response = await sendRequest();
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+};
