@@ -12,6 +12,7 @@ const initialState: IRootState['musicPlayer'] = {
     audioFile: '',
     coverImage: '',
     likes: 0,
+    duration: 0,
   },
   isPlaying: false,
 };

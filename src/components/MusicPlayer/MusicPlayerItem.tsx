@@ -3,22 +3,19 @@ import styles from '../MusicPlayer/MusicPlayerItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { musicPlayerActions } from '../../store/music-player';
 import { IRootState } from '../../store/RootState';
+import moment from 'moment';
 
 interface MusicPlayerItemProps {
   id: string;
   title: string;
   artistName: string;
   coverImage: string;
+  duration: number;
   likes: number;
 }
 
 function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
   const dispatch = useDispatch();
-
-  const onClickSongHandler = () => {
-    dispatch(musicPlayerActions.selectCurrentSong(props.id));
-  };
-
   const currentSong = useSelector(
     (state: IRootState) => state.musicPlayer.currentSong
   );
@@ -27,6 +24,15 @@ function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
     currentSong.id === props.id
       ? `${styles['song']} ${styles['active-song']}`
       : `${styles['song']}`;
+
+  const formattedDuration = moment()
+    .startOf('day')
+    .seconds(currentSong.duration)
+    .format('mm:ss');
+
+  const onClickSongHandler = () => {
+    dispatch(musicPlayerActions.selectCurrentSong(props.id));
+  };
 
   return (
     <li className={activeSongClasses} onClick={onClickSongHandler}>
@@ -41,6 +47,7 @@ function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
         <p>Likes</p>
         <p>{props.likes}</p>
       </div> */}
+      <p>{formattedDuration}</p>
     </li>
   );
 }

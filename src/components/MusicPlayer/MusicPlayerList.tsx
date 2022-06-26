@@ -27,6 +27,7 @@ function MusicPlayerList(): JSX.Element {
           artistName={song.artistName}
           likes={song.likes}
           coverImage={song.coverImage}
+          duration={song.duration}
         />
       ))}
     </ul>

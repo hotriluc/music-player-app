@@ -5,4 +5,5 @@ export interface ISong {
   artistName: string;
   coverImage: string;
   likes: number;
+  duration: number;
 }

@@ -15,8 +15,8 @@ import {
 import { likeSong } from '../../services/MusicPlayerService';
 
 function MusicPlayerNavigation(): JSX.Element {
-  const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useDispatch();
+  const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = useSelector(
     (state: IRootState) => state.musicPlayer.currentSong
   );

@@ -9,6 +9,7 @@ type songDataType = {
   music_file_path: string;
   likes: number;
   cover_image_path: string;
+  duration: number;
 };
 
 export const fetchMusicList = async (dispatch: Dispatch) => {
@@ -25,6 +26,7 @@ export const fetchMusicList = async (dispatch: Dispatch) => {
         audioFile: song.music_file_path,
         likes: song.likes,
         coverImage: song.cover_image_path,
+        duration: song.duration,
       };
     });
 
