@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './MusicPlayerNavigation.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store/RootState';
@@ -35,6 +35,15 @@ function MusicPlayerNavigation(): JSX.Element {
     dispatch(musicPlayerActions.nextSong());
   };
 
+  const prevSongHandler = () => {
+    dispatch(musicPlayerActions.prevSong());
+  };
+
+  useEffect(() => {
+    // dispatch(musicPlayerActions.playSong());
+    // console.log(currentSong);
+  }, [currentSong]);
+
   return (
     <div className={styles['navigation-wrapper']}>
       <img
@@ -43,7 +52,7 @@ function MusicPlayerNavigation(): JSX.Element {
         alt=""
       />
       <div className={styles['music-player-controls']}>
-        <button className={styles['back-btn']}>
+        <button className={styles['back-btn']} onClick={prevSongHandler}>
           <FontAwesomeIcon icon={faBackward} />
         </button>
         <button className={styles['play-btn']} onClick={playSongHandler}>
