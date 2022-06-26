@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .cover-img {
@@ -19,11 +20,13 @@
 
 .play-btn,
 .next-btn,
-.back-btn {
+.back-btn,
+.like-btn {
   border: none;
   outline: none;
   border-radius: 100%;
-  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
+  box-shadow: 0 1rem 3rem rgba(51, 50, 50, 0.4);
+  transition: all 0.3s ease-out;
 }
 
 .play-btn {
@@ -39,10 +42,36 @@
 }
 
 .next-btn:active,
-.back-btn:active {
+.back-btn:active,
+.is-playing {
   color: rgba(98, 0, 255, 0.9);
 }
 
-.is-playing {
+.like-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 1.5rem;
+
+  position: absolute;
+  right: 0;
+  top: 1.5rem;
+
+  transition: all 0.3s ease-out;
+}
+
+.play-btn:hover,
+.back-btn:hover,
+.next-btn:hover,
+.like-btn:hover {
   color: rgba(98, 0, 255, 0.9);
+  box-shadow: 0 0.5rem 3rem rgba(51, 50, 50, 0.4);
+  transform: scale(1.1);
+}
+
+.play-btn:active,
+.back-btn:active,
+.next-btn:active,
+.like-btn:active {
+  transform: scale(1);
+  box-shadow: 0 1rem 3rem rgba(51, 50, 50, 0.4);
 }

@@ -10,6 +10,7 @@ import {
   faPause,
   faForward,
   faBackward,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
 function MusicPlayerNavigation(): JSX.Element {
@@ -41,6 +42,9 @@ function MusicPlayerNavigation(): JSX.Element {
 
   return (
     <div className={styles['navigation-wrapper']}>
+      <button className={styles['like-btn']}>
+        <FontAwesomeIcon icon={faHeart} />
+      </button>
       <img
         className={styles['cover-img']}
         src={currentSong.coverImage}
