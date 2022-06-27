@@ -35,23 +35,15 @@ const musicPlayerSlice = createSlice({
     playPauseSong(state) {
       state.isPlaying = !state.isPlaying;
     },
-    nextSong(state) {
+    controlSong(state, action) {
       const currentSongIndex = state.musicList.findIndex(
         (song: ISong) => song.id === state.currentSong.id
       );
-      const nextSongIndex = mod(currentSongIndex + 1, state.musicList.length);
-      state.currentSong = state.musicList[nextSongIndex];
-      state.isPlaying = false;
-    },
-    prevSong(state) {
-      const currentSongIndex = state.musicList.findIndex(
-        (song: ISong) => song.id === state.currentSong.id
+      const songIndexToPlay = mod(
+        action.payload === 'next' ? currentSongIndex + 1 : currentSongIndex - 1,
+        state.musicList.length
       );
-      console.log(currentSongIndex);
-      const prevSongIndex = mod(currentSongIndex - 1, state.musicList.length);
-      console.log(prevSongIndex);
-
-      state.currentSong = state.musicList[prevSongIndex];
+      state.currentSong = state.musicList[songIndexToPlay];
       state.isPlaying = false;
     },
   },
