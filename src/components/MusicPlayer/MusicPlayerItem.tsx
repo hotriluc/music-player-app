@@ -43,11 +43,7 @@ function MusicPlayerItem(props: MusicPlayerItemProps): JSX.Element {
         <p className={styles['title']}>{props.title}</p>
         <p className={styles['artist-name']}>{props.artistName}</p>
       </div>
-      {/* <div className={styles['likes']}>
-        <p>Likes</p>
-        <p>{props.likes}</p>
-      </div> */}
-      <p>{formattedDuration}</p>
+      <p className={styles['duration']}>{formattedDuration}</p>
     </li>
   );
 }

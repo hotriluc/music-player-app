@@ -46,3 +46,10 @@
 .active-song {
   border-color: greenyellow;
 }
+
+.duration {
+  margin-left: auto;
+  margin-right: 2rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
