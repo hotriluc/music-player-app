@@ -65,7 +65,10 @@ export const likeSong = async (songId: string, dispatch: Dispatch) => {
 
   try {
     const likedSong = await sendRequest();
-    console.log(likedSong);
+    if (likedSong.error) {
+      throw new Error('Something went wrong');
+    }
+
     dispatch(
       UiActions.setNotification({
         status: 'success',
