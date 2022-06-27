@@ -25,25 +25,31 @@ const musicPlayerSlice = createSlice({
       state.musicList = action.payload;
       state.currentSong = state.musicList[0];
     },
-    selectCurrentSong(state, action) {
-      const foundIndex = state.musicList.findIndex(
-        (song: ISong) => song.id === action.payload
-      );
-      state.currentSong = state.musicList[foundIndex];
-      state.isPlaying = false;
-    },
     playPauseSong(state) {
       state.isPlaying = !state.isPlaying;
     },
-    controlSong(state, action) {
-      const currentSongIndex = state.musicList.findIndex(
-        (song: ISong) => song.id === state.currentSong.id
-      );
-      const songIndexToPlay = mod(
-        action.payload === 'next' ? currentSongIndex + 1 : currentSongIndex - 1,
-        state.musicList.length
-      );
-      state.currentSong = state.musicList[songIndexToPlay];
+    selectCurrentSong(state, action) {
+      let currentSongIndex;
+      let songIndexToPlay;
+
+      if (action.payload === 'next' || action.payload === 'prev') {
+        currentSongIndex = state.musicList.findIndex(
+          (song: ISong) => song.id === state.currentSong.id
+        );
+        songIndexToPlay = mod(
+          action.payload === 'next'
+            ? currentSongIndex + 1
+            : currentSongIndex - 1,
+          state.musicList.length
+        );
+      } else {
+        songIndexToPlay = state.musicList.findIndex(
+          (song: ISong) => song.id === action.payload
+        );
+      }
+
+      state.currentSong =
+        state.musicList[songIndexToPlay] || state.musicList[0];
       state.isPlaying = false;
     },
   },

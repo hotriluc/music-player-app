@@ -38,11 +38,11 @@ function MusicPlayerNavigation(): JSX.Element {
   };
 
   const nextBtnClickHandler = () => {
-    dispatch(musicPlayerActions.controlSong('next'));
+    dispatch(musicPlayerActions.selectCurrentSong('next'));
   };
 
   const prevBtnClickHandler = () => {
-    dispatch(musicPlayerActions.controlSong('prev'));
+    dispatch(musicPlayerActions.selectCurrentSong('prev'));
   };
 
   const likeBtnClickHandler = () => {
@@ -50,7 +50,7 @@ function MusicPlayerNavigation(): JSX.Element {
   };
 
   const onEndSongHandler = () => {
-    dispatch(musicPlayerActions.controlSong('next'));
+    dispatch(musicPlayerActions.selectCurrentSong('next'));
   };
 
   useEffect(() => {
