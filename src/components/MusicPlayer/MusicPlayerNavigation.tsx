@@ -46,7 +46,7 @@ function MusicPlayerNavigation(): JSX.Element {
   };
 
   const likeBtnClickHandler = () => {
-    likeSong(currentSong.id);
+    likeSong(currentSong.id, dispatch);
   };
 
   const onEndSongHandler = () => {
