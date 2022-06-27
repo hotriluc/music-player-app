@@ -1,0 +1,55 @@
+.song {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  background-color: black;
+  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
+  color: white;
+  cursor: pointer;
+
+  transition: all 0.3s ease-out;
+}
+
+.song:hover {
+  border-color: cyan;
+}
+
+.title-wrapper {
+  flex-basis: 40%;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.artist-name {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.img-holder {
+}
+.cover-img {
+  max-width: 7.5rem;
+}
+
+.likes {
+  font-size: 1.2rem;
+  margin-left: auto;
+  flex-basis: 20%;
+}
+
+.active-song {
+  border-color: greenyellow;
+}
+
+.duration {
+  margin-left: auto;
+  margin-right: 2rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
