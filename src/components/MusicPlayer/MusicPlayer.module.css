@@ -1,0 +1,14 @@
+.music-player {
+  display: flex;
+  flex-direction: column-reverse;
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  overflow: hidden;
+  background-color: white;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 2rem rgba(51, 50, 50, 0.2);
+  width: 30%;
+  height: 90vh;
+  margin: 2rem auto;
+}

@@ -1,0 +1,10 @@
+.music-player-list {
+  /* grid-column: 2; */
+  overflow-y: scroll;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  background: rgba(98, 0, 255, 0.9);
+  padding: 2.5rem;
+  height: 65%;
+}
