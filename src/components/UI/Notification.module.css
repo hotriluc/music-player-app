@@ -49,3 +49,10 @@
     transform: translateY(0);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .notification h2,
+  .notification p {
+    font-size: 1rem;
+  }
+}
