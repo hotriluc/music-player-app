@@ -32,7 +32,7 @@ const musicPlayerSlice = createSlice({
       state.currentSong = state.musicList[foundIndex];
       state.isPlaying = false;
     },
-    playSong(state) {
+    playPauseSong(state) {
       state.isPlaying = !state.isPlaying;
     },
     nextSong(state) {

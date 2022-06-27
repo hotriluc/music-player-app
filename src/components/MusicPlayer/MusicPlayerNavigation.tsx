@@ -24,24 +24,28 @@ function MusicPlayerNavigation(): JSX.Element {
     (state: IRootState) => state.musicPlayer.isPlaying
   );
 
-  const playSongHandler = () => {
+  const playOrPauseSong = () => {
     if (isPlaying) {
       audioRef.current && audioRef.current.pause();
     } else {
       audioRef.current && audioRef.current.play();
     }
-    dispatch(musicPlayerActions.playSong());
+    dispatch(musicPlayerActions.playPauseSong());
   };
 
-  const nextSongHandler = () => {
+  const playBtnClickHandler = () => {
+    playOrPauseSong();
+  };
+
+  const nextBtnClickHandler = () => {
     dispatch(musicPlayerActions.nextSong());
   };
 
-  const prevSongHandler = () => {
+  const prevBtnClickHandler = () => {
     dispatch(musicPlayerActions.prevSong());
   };
 
-  const onLikeHandler = () => {
+  const likeBtnClickHandler = () => {
     likeSong(currentSong.id);
   };
 
@@ -50,18 +54,12 @@ function MusicPlayerNavigation(): JSX.Element {
   };
 
   useEffect(() => {
-    // if (isPlaying) {
-    //   audioRef.current && audioRef.current.pause();
-    // } else {
-    //   audioRef.current && audioRef.current.play();
-    //   dispatch(musicPlayerActions.playSong());
-    // }
     const promise = audioRef?.current?.play();
 
     if (promise !== undefined) {
       promise
         .then(() => {
-          playSongHandler();
+          playOrPauseSong();
         })
         .catch(() => {
           return;
@@ -71,7 +69,7 @@ function MusicPlayerNavigation(): JSX.Element {
 
   return (
     <div className={styles['navigation-wrapper']}>
-      <button className={styles['like-btn']} onClick={onLikeHandler}>
+      <button className={styles['like-btn']} onClick={likeBtnClickHandler}>
         <FontAwesomeIcon icon={faHeart} />
       </button>
       <img
@@ -80,7 +78,7 @@ function MusicPlayerNavigation(): JSX.Element {
         alt=""
       />
       <div className={styles['music-player-controls']}>
-        <button className={styles['back-btn']} onClick={prevSongHandler}>
+        <button className={styles['back-btn']} onClick={prevBtnClickHandler}>
           <FontAwesomeIcon icon={faBackward} />
         </button>
         <button
@@ -89,11 +87,11 @@ function MusicPlayerNavigation(): JSX.Element {
               ? styles['play-btn']
               : `${styles['play-btn']} ${styles['is-playing']}`
           }
-          onClick={playSongHandler}
+          onClick={playBtnClickHandler}
         >
           <FontAwesomeIcon icon={!isPlaying ? faPlay : faPause} />
         </button>
-        <button className={styles['next-btn']} onClick={nextSongHandler}>
+        <button className={styles['next-btn']} onClick={nextBtnClickHandler}>
           <FontAwesomeIcon icon={faForward} />
         </button>
       </div>
