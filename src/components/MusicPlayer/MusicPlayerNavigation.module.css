@@ -75,3 +75,12 @@
   transform: scale(1);
   box-shadow: 0 1rem 3rem rgba(51, 50, 50, 0.4);
 }
+
+@media only screen and (max-width: 600px) {
+  .cover-img {
+    height: 300px;
+  }
+  .music-player-controls {
+    height: 6.5rem;
+  }
+}
