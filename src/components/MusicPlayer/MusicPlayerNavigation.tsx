@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './MusicPlayerNavigation.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store/RootState';
@@ -45,6 +45,30 @@ function MusicPlayerNavigation(): JSX.Element {
     likeSong(currentSong.id);
   };
 
+  const onEndSongHandler = () => {
+    dispatch(musicPlayerActions.nextSong());
+  };
+
+  useEffect(() => {
+    // if (isPlaying) {
+    //   audioRef.current && audioRef.current.pause();
+    // } else {
+    //   audioRef.current && audioRef.current.play();
+    //   dispatch(musicPlayerActions.playSong());
+    // }
+    const promise = audioRef?.current?.play();
+
+    if (promise !== undefined) {
+      promise
+        .then(() => {
+          playSongHandler();
+        })
+        .catch(() => {
+          return;
+        });
+    }
+  }, [currentSong]);
+
   return (
     <div className={styles['navigation-wrapper']}>
       <button className={styles['like-btn']} onClick={onLikeHandler}>
@@ -73,7 +97,11 @@ function MusicPlayerNavigation(): JSX.Element {
           <FontAwesomeIcon icon={faForward} />
         </button>
       </div>
-      <audio src={currentSong.audioFile} ref={audioRef}></audio>
+      <audio
+        src={currentSong.audioFile}
+        ref={audioRef}
+        onEnded={onEndSongHandler}
+      ></audio>
     </div>
   );
 }
