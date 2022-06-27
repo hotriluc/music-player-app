@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './MusicPlayerNavigation.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../store/RootState';
@@ -15,18 +15,22 @@ import {
 import { likeSong } from '../../services/MusicPlayerService';
 import Notification from '../UI/Notification';
 
+let isInitial = true;
+
 function MusicPlayerNavigation(): JSX.Element {
   const dispatch = useDispatch();
   const audioRef = useRef<HTMLAudioElement>(null);
-  const notification = useSelector(
-    (state: IRootState) => state.ui.notification
-  );
   const currentSong = useSelector(
     (state: IRootState) => state.musicPlayer.currentSong
   );
   const isPlaying: boolean = useSelector(
     (state: IRootState) => state.musicPlayer.isPlaying
   );
+
+  const notification = useSelector(
+    (state: IRootState) => state.ui.notification
+  );
+  const [displayNotification, setDisplayNotification] = useState(false);
 
   const playOrPauseSong = () => {
     if (isPlaying) {
@@ -59,7 +63,6 @@ function MusicPlayerNavigation(): JSX.Element {
 
   useEffect(() => {
     const promise = audioRef?.current?.play();
-
     if (promise !== undefined) {
       promise
         .then(() => {
@@ -71,9 +74,24 @@ function MusicPlayerNavigation(): JSX.Element {
     }
   }, [currentSong]);
 
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    } else {
+      const timer = setTimeout(() => {
+        setDisplayNotification(false);
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+        setDisplayNotification(true);
+      };
+    }
+  }, [notification]);
+
   return (
     <div className={styles['navigation-wrapper']}>
-      {notification && (
+      {displayNotification && notification && (
         <Notification
           status={notification.status}
           title={notification.title}

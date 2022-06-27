@@ -6,19 +6,21 @@
   color: white;
   padding: 0.5rem 10%;
 
-  width: 80%;
+  width: 60%;
   height: 4rem;
   background-color: rgba(98, 0, 255, 0.9);
   border-radius: 2rem;
   box-shadow: 0 1rem 3rem rgba(51, 50, 50, 0.4);
 
   position: absolute;
-  top: 1rem;
+  top: 2rem;
+
+  animation: notification-fall 0.4s ease-out;
 }
 
 .notification h2,
 .notification p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0;
 }
 
@@ -28,4 +30,22 @@
 
 .success {
   background-color: #1ad1b9;
+}
+
+.notification-animate {
+  animation: notification-fall 0.7s ease-out;
+}
+
+@keyframes notification-fall {
+  0% {
+    transform: translateY(-10rem);
+  }
+  90% {
+    opacity: 100;
+    transform: translateY(0.2rem);
+  }
+  100% {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
 }
