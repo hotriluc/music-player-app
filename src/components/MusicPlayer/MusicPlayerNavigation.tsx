@@ -13,10 +13,14 @@ import {
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import { likeSong } from '../../services/MusicPlayerService';
+import Notification from '../UI/Notification';
 
 function MusicPlayerNavigation(): JSX.Element {
   const dispatch = useDispatch();
   const audioRef = useRef<HTMLAudioElement>(null);
+  const notification = useSelector(
+    (state: IRootState) => state.ui.notification
+  );
   const currentSong = useSelector(
     (state: IRootState) => state.musicPlayer.currentSong
   );
@@ -69,6 +73,13 @@ function MusicPlayerNavigation(): JSX.Element {
 
   return (
     <div className={styles['navigation-wrapper']}>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.msg}
+        />
+      )}
       <button className={styles['like-btn']} onClick={likeBtnClickHandler}>
         <FontAwesomeIcon icon={faHeart} />
       </button>

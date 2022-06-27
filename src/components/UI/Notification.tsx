@@ -21,7 +21,7 @@ function Notification(props: NotificationProps): JSX.Element {
 
   return (
     <div className={cssClasses}>
-      <h2>{props.title}</h2>
+      {/* <h2>{props.title}</h2> */}
       <p>{props.message}</p>
     </div>
   );
